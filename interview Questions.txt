@@ -1,0 +1,29 @@
+Plugin-Delegator
+differentiate between company types
+Guidewire Batch Process extends batchprocessbase
+WorkFlows
+WorkQueues----FindTarget(), ProcessWorkItem()
+Rules
+ 
+
+
+BatchProcess::
+BatchProcessType.ttx and mention the custom batch name
+
+You extend the BatchProcessBase base class by providing your own implementation of the doWork abstract
+method that BatchProcessBase inherits from its super class, SinglePhaseBatchProcess.
+
+Your custom batch process must extend the BatchProcessBase Gosu class. You must override the abstract
+doWork method, which takes no arguments. You can override other methods, but it is not strictly necessary as the
+base class defines meaningful defaults.
+
+
+The doWork method does not have a bundle to track the database transaction. To modify data, you must use the
+Transaction.runWithNewBundle(...) API to create a bundle.
+
+Exclusive(){ return false}--it will allow multiple batches to process at a time.
+
+IMaintananceToolsAPI Webservice widely to run the custom batches and properties loading.
+
+
+
